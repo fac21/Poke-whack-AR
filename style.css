@@ -26,6 +26,8 @@ h1 {
     
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
   }
 
   .hole:after {
@@ -38,4 +40,14 @@ h1 {
     position: absolute;
     z-index: 2;
     bottom: 5px;
+  }
+
+  .mole {
+      position: absolute;
+      bottom: 5px;
+      transition: 0.4s;
+  }
+
+  .up {
+      top: 0;
   }
