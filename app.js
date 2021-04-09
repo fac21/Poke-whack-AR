@@ -17,6 +17,8 @@ function pokeAPI(chosenPokemon, mole){
 }
 }
 
+
+
 // pokepic();
 
 function randomPokeNo(){
