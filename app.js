@@ -4,19 +4,23 @@ const score = document.querySelector(".score")
 let lastHole;
 let count = 0;
 let timeLapsed = false;
+let pokemonList = ["charizard", "charmander", "squirtle", "pikachu", "ivysaur", "jigglypuff"]
 
-let name = "bulbasaur";
+let chosenPokemon = "bulbasaur";
 let pokepic = () => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+  fetch(`https://pokeapi.co/api/v2/pokemon/${chosenPokemon}`)
     .then((response) => response.json())
     .then((pokemonData) => {
-      console.dir(pokemonData);
-      console.log(moles);
       moles.forEach((mole) => (mole.src = pokemonData.sprites.front_default));
     });
 };
 
 pokepic();
+
+function randomPokeNo(){
+    let index = Math.floor(Math.random()*pokemonList.length)
+    return pokemonList[index];
+}
 
 function randomHole() {
   let index = Math.floor(Math.random() * holes.length);
@@ -56,6 +60,7 @@ function startGame() {
 
   let intStart = setInterval(() => {
     timeLapsed = true;
+    moles.forEach((mole) => mole.classList.remove("up"))
     alert(`Game over! You scored ${count}!`);
     clearInterval(intStart);
   }, 10000);
