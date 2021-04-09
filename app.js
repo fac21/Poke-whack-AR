@@ -6,16 +6,18 @@ let count = 0;
 let timeLapsed = false;
 let pokemonList = ["charizard", "charmander", "squirtle", "pikachu", "ivysaur", "jigglypuff"]
 
-let chosenPokemon = "bulbasaur";
-let pokepic = () => {
+function pokeAPI(chosenPokemon, mole){
+() => {
   fetch(`https://pokeapi.co/api/v2/pokemon/${chosenPokemon}`)
     .then((response) => response.json())
     .then((pokemonData) => {
-      moles.forEach((mole) => (mole.src = pokemonData.sprites.front_default));
+        mole.src = pokemonData.sprites.front_default
+      //moles.forEach((mole) => (mole.src = pokemonData.sprites.front_default));
     });
-};
+}
+}
 
-pokepic();
+// pokepic();
 
 function randomPokeNo(){
     let index = Math.floor(Math.random()*pokemonList.length)
@@ -41,6 +43,7 @@ function peep() {
   let time = randomTime(1000, 5000);
   let hole = randomHole();
   let mole = hole.querySelector(".mole");
+  pokeAPI(randomPokeNo, mole)
   console.log(hole, mole);
 
   mole.classList.add("up");
